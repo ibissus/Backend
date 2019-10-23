@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KompaniaPchor</name>
+    </assembly>
+    <members>
+        <member name="M:KompaniaPchor.Controllers.AuthController.Authorize(System.String,System.String,System.String)">
+            <summary>User Authentication and Authorization</summary>
+            <returns>JWT authorization token</returns>
+            <response code="200">Authorized and JWT returned</response>
+            <response code="400">Authorization failed</response>
+            <remarks>
+            System SUPER USER CREDENTIALS
+            Login: SuperUser
+            Pass: aaa
+            </remarks>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.CompanyController.GetCompanyList">
+             <summary>Get all comapny groups</summary>
+             <returns>List of company groups</returns>
+            <response code="200">Company list</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.CompanyController.GetCompany(System.Int32)">
+            <summary>Get Company group details</summary>
+            <param name="companyId">Company ID number</param>
+            <returns>Company details</returns>
+            <response code="200">Company details</response>
+            <response code="400">Error processing request</response>
+            <response code="404">Company does not exist</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.CompanyController.CreateCompany(System.Int32)">
+            <summary>Create new company group</summary>
+            <param name="companyId">Company number</param>
+            <response code="200">Company created</response>
+            <response code="400">Error processing request</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.CompanyMembersController.GetAllCompanyMembers(System.Int32)">
+            <summary>Get company soldiers</summary>
+            <param name="companyId">Company ID number</param>
+            <returns>List of soldiers</returns>
+            <response code="200">Company soldiers</response>
+            <response code="400">Error processing request</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.CompanyMembersController.RemoveSoldierFromCompany(System.Int32,System.Int32)">
+            <summary>Remove sorldier from company group</summary>
+            <param name="companyId">Company ID number</param>
+            <param name="soldierId">Soldier ID</param>
+            <response code="200">Soldier removed</response>
+            <response code="400">Error processing request</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.FileController.GetFile(System.Guid)">
+            <summary>Download file</summary>
+            <param name="id">File ID</param>
+            <returns>Physical File</returns>
+            <response code="200">File</response>
+            <response code="400">Download failed</response>
+            <response code="400">File not found</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.FileController.UploadFileAsync(KompaniaPchor.DTO_Models.DTO_FileUpload)">
+            <summary>Upload new file</summary>
+            <param name="form">Upload form</param>
+            <response code="200">Upload success</response>
+            <response code="200">Upload failed</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.FileController.DeleteFileAsync(System.Guid)">
+            <summary>Remove file from server</summary>
+            <param name="id">File ID</param>
+            <response code="200">File deleted</response>
+            <response code="400">Removing failed</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.FolderController.GetCompanyFolders(System.Int32,System.Nullable{System.Int32})">
+            <summary>Get company group subfolders and files</summary>
+            <param name="companyId">company ID</param>
+            <param name="rootFolder">containing folder if any</param>
+            <returns>Subfolders and files</returns>
+            <response code="200">Folder tree</response>
+            <response code="404">Non-existing folder</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.FolderController.GetOtherFolders(KompaniaPchor.Services.Interfaces.IPlatoonService,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>Get platoon folders</summary>
+            <param name="companyId">company ID</param>
+            <param name="platoonId">platoon ID</param>
+            <param name="rootFolder">containing folder if any</param>
+            <returns>Folder tree</returns>
+            <response code="200">Folder tree</response>
+            <response code="404">Non-existing folder</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.FolderController.CreateFolder(KompaniaPchor.Services.Interfaces.ICompanyService,KompaniaPchor.Services.Interfaces.IPlatoonService,KompaniaPchor.DTO_Models.DTO_CreateFolder)">
+            <summary>Create new folder</summary>
+            <param name="form">Create folder form</param>
+            <response code="200">Folder created</response>
+            <response code="400">Creating folder failed</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.FolderController.UpdateFolderName(System.Int32,System.String)">
+            <summary>Rename folder</summary>
+            <param name="folderId">Folder ID</param>
+            <param name="newName">New name for a folder</param>
+            <response code="200">Folder renamed</response>
+            <response code="400">Renaming failed</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.FolderController.DeleteFolder(System.Int32)">
+            <summary>Delte folder</summary>
+            <param name="folderId">Folder ID</param>
+            <response code="200">Folder deleted</response>
+            <response code="400">Deleting failed</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.NotificationController.SendNotificatin(KompaniaPchor.DTO_Models.DTO_NotificationForm)">
+            <summary>Send notification to specified target group</summary>
+            <param name="form">Notification form</param>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.PlatoonController.GetPlatoonList(System.Int32)">
+            <summary>Get platoon groups of the company</summary>
+            <param name="companyId">Company number</param>
+            <returns>List of platoon groups</returns>
+            <response code="200">Platoon list</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.PlatoonController.GetPlatoonDetails(System.Int32,System.Int32)">
+            <summary>Get platoon details</summary>
+            <param name="companyId">Company number</param>
+            <param name="platoonId">Platoon number</param>
+            <returns>Platoon group details</returns>
+            <response code="200">Platoon details</response>
+            <response code="400">Error processing request</response>
+            <response code="404">Platoon does not exist</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.PlatoonController.CreatePlatoon(System.Int32,System.Int32)">
+            <summary>Create new platoon group</summary>
+            <param name="companyId">Company number</param>
+            <param name="platoonId">Platoon nuber</param>
+            <response code="200">Platoon created</response>
+            <response code="400">Error processing request</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.RegisterController.Register(KompaniaPchor.DTO_Models.DTO_RegisterForm)">
+            <summary>Register new user</summary>
+            <param name="form">Registration form</param>
+            <returns>Login for the new user</returns>
+            <response code="200">User created and user's new login returned</response>
+            <response code="400">User was not created due to form issue</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.RequestController.AcceptRequest(System.Int32,System.Boolean)">
+            <summary>Accept or reject a request</summary>
+            <param name="requestId">Request ID</param>
+            <param name="decision">Accept or Reject [T / F]</param>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.RequestController.SendRequest(KompaniaPchor.DTO_Models.DTO_Request)">
+            <summary>Send a new request</summary>
+            <param name="request">Request from</param>
+            <remarks>
+            RequestType:
+            1 - Platoon Commander
+            2 - Platoon Commander Assistant
+            3 - Join Company Group
+            4 - Join Platoon Group
+            </remarks>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.SoldierController.GetSoldierDetails(System.Int32)">
+            <summary>Get detailed information about the soldier</summary>
+            <param name="soldierId">Soldier ID</param>
+            <returns>Soldier details</returns>
+            <response code="200">Soldier details</response>
+            <response code="404">Soldier does not exist</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.TimeTableController.GetCompanyTimeTable(System.Int32)">
+            <summary>Get company timetable</summary>
+            <param name="companyId">company ID</param>
+            <returns>Image of timetable</returns>
+            <response code="200">Image of company timetable</response>
+            <response code="400">Downloading timetable failed</response>
+        </member>
+        <member name="M:KompaniaPchor.Controllers.TimeTableController.UpdateCompanyTimeTable(System.Int32,KompaniaPchor.DTO_Models.DTO_TimeTable)">
+            <summary>Send new company's timetable</summary>
+            <param name="companyId">company ID</param>
+            <param name="dto">Timetable image</param>
+            <response code="200">Timetable updated</response>
+            <response code="400">Updating timetable failed</response>
+        </member>
+        <member name="P:KompaniaPchor.DTO_Models.DTO_SystemUser.UserId">
+            <summary>Corresponds to Zolnierz.IdOsoby</summary>
+        </member>
+        <member name="T:KompaniaPchor.Filters.GroupMemberAttribute">
+            <summary>Authorize access only for specified group members</summary>
+        </member>
+        <member name="M:KompaniaPchor.Identity.RoleService.AddToCCRole(KompaniaPchor.Identity.SystemUser)">
+            <summary>Add user to Company Commander Role</summary>
+        </member>
+        <member name="M:KompaniaPchor.Identity.RoleService.RemoveFromCCRole(KompaniaPchor.Identity.SystemUser)">
+            <summary>Removes user from Company Commander Role</summary>
+        </member>
+        <member name="M:KompaniaPchor.Identity.RoleService.AddToPCRole(KompaniaPchor.Identity.SystemUser)">
+            <summary>Add user to Platoon Commander Role</summary>
+        </member>
+        <member name="M:KompaniaPchor.Identity.RoleService.RemoveFromPCRole(KompaniaPchor.Identity.SystemUser)">
+            <summary>Removes user from Platoon Commander Role</summary>
+        </member>
+        <member name="M:KompaniaPchor.Identity.RoleService.AddToAssRole(KompaniaPchor.Identity.SystemUser)">
+            <summary>Add user to Assistant Role</summary>
+        </member>
+        <member name="M:KompaniaPchor.Identity.RoleService.RemoveFromAssRole(KompaniaPchor.Identity.SystemUser)">
+            <summary>Removes user from Assistant Role</summary>
+        </member>
+        <member name="F:KompaniaPchor.ORM_Models.TypProsby.CC">
+            <summary>Company Commander</summary>
+        </member>
+        <member name="F:KompaniaPchor.ORM_Models.TypProsby.PC">
+            <summary>Platoon Commander</summary>
+        </member>
+        <member name="F:KompaniaPchor.ORM_Models.TypProsby.PA">
+            <summary>Platoon Commander Assistant</summary>
+        </member>
+        <member name="F:KompaniaPchor.ORM_Models.TypProsby.JC">
+            <summary>Join Company Group</summary>
+        </member>
+        <member name="F:KompaniaPchor.ORM_Models.TypProsby.JP">
+            <summary>Join Platoon Group</summary>
+        </member>
+        <member name="M:KompaniaPchor.Services.CompanyService.ApplyForPCRole(System.Int32,System.Int32,System.String)">
+            <summary>Request a Platoon Commander Role</summary>
+        </member>
+        <member name="M:KompaniaPchor.Services.Interfaces.PlatoonService.ApplyForPCARole(System.Int32,System.Int32,System.String)">
+            <summary>Request a Platoon Commander Assistant Role</summary>
+        </member>
+    </members>
+</doc>
